@@ -1,0 +1,52 @@
+.footer {
+  width: 100%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 20px; /* Añadimos un espacio interno para que el contenido no se pegue al borde */
+  box-sizing: border-box; /* Asegurémonos de que el padding se incluya en el ancho total */
+}
+
+
+.container-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centra los elementos horizontalmente */
+}
+.footer-logo{
+  font-weight: 400;
+  text-align: left;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  color: rgb(250, 238, 203);
+  height: 69px;
+  aspect-ratio: auto 199 / 69;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border-style: none;
+  top: initial !important;
+  transform: initial !important;
+  position: relative;
+  width: auto;
+  max-height: 100%;
+  
+}
+.links,
+.social {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan a medida que el ancho de la pantalla disminuye */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  list-style: none;
+  padding: 0;
+}
+
+.links li,
+.social li {
+  margin: 0 0.5rem; /* Espacio entre elementos */
+}
+
+.footer-separator {
+  color: #fff;
+}

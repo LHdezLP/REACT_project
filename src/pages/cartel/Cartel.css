@@ -1,0 +1,16 @@
+.message-container {
+    
+    top: 85%;
+    left: 0;
+    right: 0;
+    text-align: center; 
+  }
+  
+  
+  
+  .front-img {
+    display: block;
+    width: 100%; 
+    height: auto; 
+  }
+  
