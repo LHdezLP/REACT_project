@@ -1,19 +1,31 @@
 .footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   background-color: black;
   color: #fff;
   text-align: center;
-  padding: 20px; /* Añadimos un espacio interno para que el contenido no se pegue al borde */
-  box-sizing: border-box; /* Asegurémonos de que el padding se incluya en el ancho total */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
 
 .container-box {
   display: flex;
-  flex-direction: row;
-  justify-content: center; /* Centra los elementos horizontalmente */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
 }
-.footer-logo{
+
+.footer-logo {
   font-weight: 400;
   text-align: left;
   font-family: "Roboto Condensed", sans-serif;
@@ -31,22 +43,79 @@
   position: relative;
   width: auto;
   max-height: 100%;
-  
 }
+
 .links,
 .social {
   display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan a medida que el ancho de la pantalla disminuye */
-  justify-content: center; /* Centra los elementos horizontalmente */
+  flex-direction: column;
+  align-items: center;
   list-style: none;
   padding: 0;
 }
 
 .links li,
 .social li {
-  margin: 0 0.5rem; /* Espacio entre elementos */
+  margin: 0.5rem 0;
 }
 
 .footer-separator {
   color: #fff;
+}
+
+.copyright {
+  color: #fff;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.copyright a {
+  color: #fff;
+  margin: 0 5px;
+}
+
+.privacy-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.privacy-menu p {
+  margin-bottom: 10px;
+}
+
+.privacy-menu button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-box {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .links,
+  .social {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .links li,
+  .social li {
+    margin: 0 0.5rem;
+  }
 }

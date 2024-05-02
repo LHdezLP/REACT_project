@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import frontImage from '../../img/main-stage.jpg';
@@ -9,7 +9,7 @@ import { images } from '../../models/carrousel/carrousel.js';
 import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import moviesService from "../../services/firebase/tickets.service";
+
 
 // ------ Esto es para el Carrusel de imagenes
 function Home() {
@@ -23,28 +23,7 @@ function Home() {
   const handleNextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
-  // -----------Esto es para firebase
-  const [movies, setMovies] = useState([])
 
-  const getAllMovies = () => {
-    moviesService.getAllMovies().then((items) => {
-      let auxMovies = []
-      items.forEach((item) => {
-        const key = item.key
-        const data = item.val()
-
-        auxMovies.push({
-          name: data.name,
-          price: data.price
-        })
-      })
-      setMovies([...auxMovies])
-    })
-  }
-  useEffect(() => {
-    getAllMovies()
-
-  }, [])
   // ---------------------
   return (
     <div className="wrapper">
@@ -98,14 +77,7 @@ function Home() {
         />
       </div>
 
-      <div className='firebase-section'>
-        {
-          movies.map((m) => (
 
-            <p>{m.name} {m.price}</p>
-          ))
-        }
-      </div>
 
       <div className="section-container">
         <img

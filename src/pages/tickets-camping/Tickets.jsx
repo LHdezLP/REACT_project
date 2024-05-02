@@ -69,6 +69,9 @@ function Tickets() {
                         <div className="filter-option" onClick={() => handleFilterChange('Premium')}>
                           Premium
                         </div>
+                        <div className="filter-option" onClick={() => handleFilterChange('Hellbound')}>
+                          Hellbound
+                        </div>
                         <div className="filter-option" onClick={clearFilter}>
                           Clear
                         </div>

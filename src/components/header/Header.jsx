@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logoImage from '../../img/skull-logo.png';
 import abonoImage from '../../img/logo-abonos.png';
@@ -8,6 +8,16 @@ import './Header.css';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [daysLeft, setDaysLeft] = useState(0);
+
+  
+  useEffect(() => {
+    const today = new Date();
+    const targetDate = new Date("May 9, 2024");
+    const differenceInTime = targetDate.getTime() - today.getTime();
+    const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+    setDaysLeft(differenceInDays);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,7 +28,10 @@ function Header() {
       <div className='header-container'>
         <div className="nav-bar-top">
           <div className="nav-bar-top-container">
-            <a className="quick-info-tab">Tickets: On Sale!</a>
+            <div className="days-left">
+              {daysLeft > 0 ? `Rodentpocalypse begins in ${daysLeft} days!!` : "The Rodentpocalypse is here!"}
+            </div>
+            <Link to="/tickets"><a className="quick-info-tab">Tickets: On Sale!</a></Link>
           </div>
         </div>
         
