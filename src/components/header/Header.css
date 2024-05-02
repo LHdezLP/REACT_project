@@ -249,6 +249,7 @@
   align-items: center;
   justify-content: center; 
   flex-direction: column; 
+  list-style-type: none;
 }
 
 .menu-toggle {
@@ -259,6 +260,7 @@
 
 .menu-items {
   padding: 10px;
+  
 }
 
 

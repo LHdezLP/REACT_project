@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #777;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.section-container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.front-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.panel-container {
+  background-color: #fff;
+  box-shadow: 0 3px 8px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+.list-group {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.list-group-item {
+  border: none;
+  align-items: center;
+  margin-bottom: 1px;
+}
+
+.list-group-item .panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ajuste */
+  padding: 10px;
+  background-color: #f8f9fa;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-group-item .panel-heading i {
+  margin-right: 10px;
+}
+
+.entrada {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entrada .col-ticket-type {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.entrada .fa {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.entrada .et-entrada-nombre {
+  flex: 1;
+}
+
+.entrada .et-entrada-descripcion {
+  flex: 2;
+}
+.entrada .et-entrada-nombre-txt {
+  font-weight: bold;
+}
+
+.entrada .et-entrada-precio {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.entrada .col-ticket-price {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.entrada .alert-danger {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px;
+  font-size: 0.9em;
+  border-radius: 5px;
+}
+
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+}
+.filter-btn:hover {
+  background-color: #ddd;
+}
+
+.filter-btn:focus {
+  outline: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1;
+  left: -50px; 
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.filter-option {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.filter-option:hover {
+  background-color: #ddd;
+}
+
+.hidden {
+  display: none;
+}

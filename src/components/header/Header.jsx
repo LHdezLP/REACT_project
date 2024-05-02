@@ -21,6 +21,7 @@ function Header() {
             <a className="quick-info-tab">Tickets: On Sale!</a>
           </div>
         </div>
+        
         <div className="header">
           <div className="nav-bar-menu">
             <div className="navbar-logo-container">
@@ -28,6 +29,7 @@ function Header() {
                 <img src={logoImage} alt="headbar-logo" className="logo-img" />
               </Link>
             </div>
+
             <button
               className="menu-toggle"
               aria-expanded={isMenuOpen}
@@ -39,6 +41,7 @@ function Header() {
                 <span>&#9776;</span>
               )}
             </button>
+
             <ul className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
               <li className="menu-items">
                 <Link to="/tickets">
@@ -62,6 +65,7 @@ function Header() {
                 </Link>
               </li>
             </ul>
+
           </div>
         </div>
       </div>
