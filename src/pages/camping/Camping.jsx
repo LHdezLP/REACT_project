@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import vehiclesService from "../../services/firebase/vehicles.service"; // Corregir el import
+import vehiclesService from "../../services/firebase/vehicles.service";
 
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
@@ -10,7 +10,6 @@ import frontImage from '../../img/girl-camping-at-festival.jpg';
 import './Camping.css';
 
 function Camping() {
-
   const [vehicles, setVehicles] = useState([]);
   const [filterBy, setFilterBy] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -48,6 +47,15 @@ function Camping() {
     setShowFilters(false);
   };
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#viajes-section') {
+      const section = document.getElementById('viajes-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -64,14 +72,13 @@ function Camping() {
         </div>
 
         <div className="section-container">
-
         </div>
 
         <div className="section-container">
           <img src={frontImage} alt="front-image" className="front-img" />
         </div>
 
-        <div className="section-container">
+        <div className="section-container" id="viajes-section">
           <div className='message-container'>
             <img src={sharetravelImage} alt="share-travel-image" className="front-img" />
           </div>
@@ -79,9 +86,9 @@ function Camping() {
 
         <div className="section-container">
           <div className="travel-selection-panel">
-            <ul className="list-group">
-              <li className="list-group-item">
-                <div className="panel-heading">
+            <ul className="travel-list-group">
+              <li className="travel-list-group-item">
+                <div className="travel-panel-heading">
                   <i className="fa fa-fw fa-shopping-cart"></i> VIAJES DISPONIBLES
                   <div className="filter-dropdown">
                     <button className="filter-btn" onClick={() => setShowFilters(!showFilters)}>
@@ -104,8 +111,10 @@ function Camping() {
                   </div>
                 </div>
               </li>
+              
+              
               {vehicles.map(vehicle => (
-                <li key={vehicle.key} className={"list-item" + (filterBy && !vehicle.type.includes(filterBy) ? ' hidden' : '')}>
+                <li key={vehicle.key} className={"travel-list-item" + (filterBy && !vehicle.type.includes(filterBy) ? ' hidden' : '')}>
                   <div className="travel-row">
                     <div className="row entrada">
                       <div className="col-driver">
@@ -144,13 +153,10 @@ function Camping() {
           </div>
         </div>
 
-
         <Footer />
       </div>
     </>
   );
 }
 
-
 export default Camping;
-

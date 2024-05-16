@@ -6,7 +6,31 @@
     text-align: center; 
   }
   
+  .travel-list-group {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
   
+  .travel-list-group {
+    border: none;
+    align-items: center;
+    margin-bottom: 1px;
+  }
+  
+  .travel-list-group-item .travel-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px;
+    background-color: #f8f9fa;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .travel-list-group-item .travel-panel-heading i {
+    margin-right: 10px;
+  }
   
   .front-img {
     display: block;
@@ -18,10 +42,9 @@
     background-color: blanchedalmond;
   }
   
-  .list-item {
+  .travel-list-item {
     border: 1px solid #ccc;
     margin-bottom: 20px;
-    padding: 10px;
     width: 100vw;
   }
   
@@ -29,10 +52,7 @@
     margin-bottom: 10px;
   }
   
-  .entrada {
-    display: flex;
-    align-items: center;
-  }
+  
   
   .col-driver {
     flex: 1;

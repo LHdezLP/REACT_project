@@ -10,7 +10,6 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [daysLeft, setDaysLeft] = useState(0);
 
-  
   useEffect(() => {
     const today = new Date();
     const targetDate = new Date("May 9, 2024");
@@ -31,7 +30,7 @@ function Header() {
             <div className="days-left">
               {daysLeft > 0 ? `Rodentpocalypse begins in ${daysLeft} days!!` : "The Rodentpocalypse is here!"}
             </div>
-            <Link to="/tickets"><a className="quick-info-tab">Tickets: On Sale!</a></Link>
+            <Link to="/tickets"><span className="quick-info-tab">Tickets: On Sale!</span></Link>
           </div>
         </div>
         
@@ -71,14 +70,13 @@ function Header() {
                 </Link>
               </li>
               <li className="menu-items">
-                <Link to="/camping">
+                <Link to="/camping#viajes-section">
                   <div className="logo-item">
                     <img src={travelImage} alt="travel-tab" className="item-img" />
                   </div>
                 </Link>
               </li>
             </ul>
-
           </div>
         </div>
       </div>

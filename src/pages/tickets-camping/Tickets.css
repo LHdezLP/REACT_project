@@ -48,7 +48,7 @@ body {
 .list-group-item .panel-heading {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ajuste */
+  justify-content: space-between; 
   padding: 10px;
   background-color: #f8f9fa;
   color: #333;
@@ -58,7 +58,13 @@ body {
 .list-group-item .panel-heading i {
   margin-right: 10px;
 }
-
+.post-travel {
+  border: 2px solid red; 
+  padding: 5px; 
+  border-radius: 50%; 
+  color: red; 
+  display: inline-block; 
+}
 .entrada {
   display: flex;
   justify-content: space-between;
