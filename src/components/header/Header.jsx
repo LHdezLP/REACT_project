@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logoImage from '../../img/skull-logo.png';
 import abonoImage from '../../img/logo-abonos.png';
 import campingImage from '../../img/camping-logo.png';
-import cartelImage from '../../img/cartel-logo.png';
+import travelImage from '../../img/icono-viajes.png';
 import './Header.css';
 
 function Header() {
@@ -64,16 +64,16 @@ function Header() {
                 </Link>
               </li>
               <li className="menu-items">
-                <Link to="/tickets">
+                <Link to="/camping">
                   <div className="logo-item">
                     <img src={campingImage} alt="camping-tab" className="item-img" />
                   </div>
                 </Link>
               </li>
               <li className="menu-items">
-                <Link to="/cartel">
+                <Link to="/camping">
                   <div className="logo-item">
-                    <img src={cartelImage} alt="bands-tab" className="item-img" />
+                    <img src={travelImage} alt="travel-tab" className="item-img" />
                   </div>
                 </Link>
               </li>

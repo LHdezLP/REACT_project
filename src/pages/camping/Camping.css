@@ -1,0 +1,78 @@
+.message-container {
+    
+    top: 85%;
+    left: 0;
+    right: 0;
+    text-align: center; 
+  }
+  
+  
+  
+  .front-img {
+    display: block;
+    width: 100%; 
+    height: auto; 
+  }
+  .travel-selection-panel{
+    width: 100vw;
+    background-color: blanchedalmond;
+  }
+  
+  .list-item {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100vw;
+  }
+  
+  .travel-row {
+    margin-bottom: 10px;
+  }
+  
+  .entrada {
+    display: flex;
+    align-items: center;
+  }
+  
+  .col-driver {
+    flex: 1;
+  }
+  
+  .col-driver i {
+    margin-right: 5px;
+  }
+  
+  .et-travel-nombre {
+    display: flex;
+    align-items: center;
+  }
+  
+  .et-travel-driver {
+    margin-right: 10px;
+  }
+  
+  .et-vehicle-type {
+    margin-top: 5px;
+  }
+  
+  .col-sits-left {
+    margin-left: 20px;
+  }
+  
+  .et-sits-left {
+    padding: 5px;
+  }
+  
+  .reserve-sit {
+    display: flex;
+  }
+  
+  .reserve-sit-item {
+    flex: 1;
+    margin-right: 5px;
+  }
+  
+  .driver-info {
+    margin-top: 10px;
+  }
+  
