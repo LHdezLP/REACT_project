@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import vehiclesService from "../../services/firebase/vehicles.service";
-
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
+import Modal from "../../components/modal/Modal";
+import RegisterForm from "../../components/forms/RegisterForm";
+import LoginForm from "../../components/forms/LoginForm";
+import AddTripForm from "../../components/forms/AddTripForm";
+import ModifyTripForm from "../../components/forms/ModifyTripForm"; // Agregado el import
+
 import sectionImage from '../../img/Camping-2-Poule-2019.jpg';
 import campingImage from '../../img/camp-here.png';
 import sharetravelImage from '../../img/share-travel.png';
@@ -13,6 +18,12 @@ function Camping() {
   const [vehicles, setVehicles] = useState([]);
   const [filterBy, setFilterBy] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showAddTripForm, setShowAddTripForm] = useState(false);
+  const [showModifyForm, setShowModifyForm] = useState(false); // Nuevo estado
+  const [modifiedVehicle, setModifiedVehicle] = useState(null); // Nuevo estado
 
   useEffect(() => {
     getAllVehicles();
@@ -57,6 +68,24 @@ function Camping() {
     }
   }, []);
 
+  const handleLoginSuccess = () => {
+    setShowLoginForm(false);
+    setShowAddTripForm(true);
+  };
+
+  const handleDelete = (vehicleId) => {
+    vehiclesService.deleteVehicle(vehicleId).then(() => {
+      alert("Viaje eliminado exitosamente!");
+    }).catch(error => {
+      console.error("Error al eliminar viaje: ", error);
+    });
+  };
+
+  const handleModify = (vehicle) => {
+    setModifiedVehicle(vehicle);
+    setShowModifyForm(true);
+  };
+
   return (
     <>
       <div className="wrapper">
@@ -89,7 +118,10 @@ function Camping() {
             <ul className="travel-list-group">
               <li className="travel-list-group-item">
                 <div className="travel-panel-heading">
-                  <i className="fa fa-fw fa-shopping-cart"></i> VIAJES DISPONIBLES
+                  <i className="post-travel-title"></i> VIAJES DISPONIBLES -
+                  <div className="post-travel-btn">
+                    <button onClick={() => setShowModal(true)}>Open Modal</button>
+                  </div>
                   <div className="filter-dropdown">
                     <button className="filter-btn" onClick={() => setShowFilters(!showFilters)}>
                       Filtro
@@ -111,8 +143,7 @@ function Camping() {
                   </div>
                 </div>
               </li>
-              
-              
+
               {vehicles.map(vehicle => (
                 <li key={vehicle.key} className={"travel-list-item" + (filterBy && !vehicle.type.includes(filterBy) ? ' hidden' : '')}>
                   <div className="travel-row">
@@ -145,6 +176,8 @@ function Camping() {
                   <div className="row driver-info">
                     <div className="col">
                       Driver Info: {vehicle.info}
+                      <button onClick={() => handleDelete(vehicle.key)}>Eliminar</button>
+                      <button onClick={() => handleModify(vehicle)}>Modificar</button>
                     </div>
                   </div>
                 </li>
@@ -155,6 +188,44 @@ function Camping() {
 
         <Footer />
       </div>
+
+      {showModal && (
+                <Modal showModal={showModal} closeModal={() => setShowModal(false)}>
+          <p>El usuario debe estar registrado para postear un viaje</p>
+          <button onClick={() => { setShowModal(false); setShowRegisterForm(true); }}>REGISTRO</button>
+          <button onClick={() => { setShowModal(false); setShowLoginForm(true); }}>AÑADE VIAJE</button>
+        </Modal>
+      )}
+
+      {showRegisterForm && (
+        <Modal showModal={showRegisterForm} closeModal={() => setShowRegisterForm(false)}>
+          <RegisterForm closeModal={() => setShowRegisterForm(false)} />
+        </Modal>
+      )}
+
+      {showLoginForm && (
+        <Modal showModal={showLoginForm} closeModal={() => setShowLoginForm(false)}>
+          <LoginForm
+            closeModal={() => setShowLoginForm(false)}
+            onSuccess={handleLoginSuccess}
+          />
+        </Modal>
+      )}
+
+      {showAddTripForm && (
+        <Modal showModal={showAddTripForm} closeModal={() => setShowAddTripForm(false)}>
+          <AddTripForm closeModal={() => setShowAddTripForm(false)} />
+        </Modal>
+      )}
+
+      {showModifyForm && modifiedVehicle && ( // Mostrando el formulario de modificación
+        <Modal showModal={showModifyForm} closeModal={() => setShowModifyForm(false)}>
+          <ModifyTripForm
+            vehicle={modifiedVehicle}
+            closeModal={() => setShowModifyForm(false)}
+          />
+        </Modal>
+      )}
     </>
   );
 }
