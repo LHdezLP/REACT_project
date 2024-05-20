@@ -1,6 +1,7 @@
 import React from 'react';
 
 function RSSFeedPage() {
+  
   return (
     <div>
       <h1>Feed RSS de Anuncios de Viajes</h1>
