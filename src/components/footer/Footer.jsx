@@ -64,7 +64,7 @@ function Footer() {
         © 2024 RODENTPOCALYPSE Todos los derechos reservados 
         <Link to="#" onClick={togglePrivacyMenu}>Política de Privacidad y Cookies</Link> | 
         <Link to="#">Condiciones de Venta</Link> | 
-        <a href="/rss" target="_blank" rel="noopener noreferrer">Suscríbete a nuestro RSS</a>
+        <Link to="/rss">Suscríbete a nuestro RSS</Link>
 
       </div>
       {showPrivacyMenu && (

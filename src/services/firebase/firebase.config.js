@@ -8,7 +8,6 @@ const firebaseConfig = {
   apiKey: "AIzaSyA-3H2jykgJOLQuiOmlW7jW9cHCtuEOmgw",
   authDomain: "react-253c4.firebaseapp.com",
   databaseURL: "https://react-253c4-default-rtdb.europe-west1.firebasedatabase.app/",
-
   projectId: "react-253c4",
   storageBucket: "react-253c4.appspot.com",
   messagingSenderId: "731043556647",

@@ -8,7 +8,6 @@ import LoginForm from "../../components/forms/LoginForm";
 import LoginToModify from "../../components/forms/LoginToModify";
 import AddTripForm from "../../components/forms/AddTripForm";
 import ModifyTripForm from "../../components/forms/ModifyTripForm";
-
 import sectionImage from '../../img/Camping-2-Poule-2019.jpg';
 import campingImage from '../../img/camp-here.png';
 import sharetravelImage from '../../img/share-travel.png';
@@ -27,6 +26,7 @@ function Camping() {
   const [showModifyForm, setShowModifyForm] = useState(false);
   const [modifiedVehicle, setModifiedVehicle] = useState(null);
   const [operation, setOperation] = useState(null); 
+ 
 
   useEffect(() => {
     getAllVehicles();
