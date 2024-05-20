@@ -5,13 +5,14 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database"
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC2kPWL6ifjRhg6jEzznU3f2o2JdcJ7UGg",
-  authDomain: "students-54648.firebaseapp.com",
-  databaseURL: "https://students-54648-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "students-54648",
-  storageBucket: "students-54648.appspot.com",
-  messagingSenderId: "1005442943430",
-  appId: "1:1005442943430:web:aeb1666d0690f4cd4bcac7"
+  apiKey: "AIzaSyA-3H2jykgJOLQuiOmlW7jW9cHCtuEOmgw",
+  authDomain: "react-253c4.firebaseapp.com",
+  databaseURL: "https://react-253c4-default-rtdb.europe-west1.firebasedatabase.app/",
+
+  projectId: "react-253c4",
+  storageBucket: "react-253c4.appspot.com",
+  messagingSenderId: "731043556647",
+  appId: "1:731043556647:web:0ffd29b2ff059267544d02"
 };
 
 // Initialize Firebase

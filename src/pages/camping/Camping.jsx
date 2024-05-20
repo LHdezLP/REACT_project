@@ -5,8 +5,9 @@ import Header from "../../components/header/Header";
 import Modal from "../../components/modal/Modal";
 import RegisterForm from "../../components/forms/RegisterForm";
 import LoginForm from "../../components/forms/LoginForm";
+import LoginToModify from "../../components/forms/LoginToModify";
 import AddTripForm from "../../components/forms/AddTripForm";
-import ModifyTripForm from "../../components/forms/ModifyTripForm"; // Agregado el import
+import ModifyTripForm from "../../components/forms/ModifyTripForm";
 
 import sectionImage from '../../img/Camping-2-Poule-2019.jpg';
 import campingImage from '../../img/camp-here.png';
@@ -21,9 +22,11 @@ function Camping() {
   const [showModal, setShowModal] = useState(false);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showLoginToModify, setLoginToModify] = useState(false);
   const [showAddTripForm, setShowAddTripForm] = useState(false);
-  const [showModifyForm, setShowModifyForm] = useState(false); // Nuevo estado
-  const [modifiedVehicle, setModifiedVehicle] = useState(null); // Nuevo estado
+  const [showModifyForm, setShowModifyForm] = useState(false);
+  const [modifiedVehicle, setModifiedVehicle] = useState(null);
+  const [operation, setOperation] = useState(null); 
 
   useEffect(() => {
     getAllVehicles();
@@ -73,17 +76,41 @@ function Camping() {
     setShowAddTripForm(true);
   };
 
+  const handleLoginModifySuccess = (authenticated, vehicle) => {
+    setLoginToModify(false);
+    if (authenticated) {
+      if (operation === 'modify') {
+        setModifiedVehicle(vehicle);
+        setShowModifyForm(true);
+      } else if (operation === 'delete') {
+        handleDelete(vehicle.key);
+      }
+    }
+  };
+
   const handleDelete = (vehicleId) => {
     vehiclesService.deleteVehicle(vehicleId).then(() => {
       alert("Viaje eliminado exitosamente!");
+      window.location.reload(); // Reload the page after deletion
     }).catch(error => {
       console.error("Error al eliminar viaje: ", error);
     });
   };
 
   const handleModify = (vehicle) => {
+    setOperation('modify');
     setModifiedVehicle(vehicle);
-    setShowModifyForm(true);
+    setLoginToModify(true);
+  };
+
+  const handleLoginToDelete = (vehicle) => {
+    setOperation('delete');
+    setModifiedVehicle(vehicle);
+    setLoginToModify(true);
+  };
+
+  const handleAddTrip = () => {
+    setShowModal(true);
   };
 
   return (
@@ -120,7 +147,7 @@ function Camping() {
                 <div className="travel-panel-heading">
                   <i className="post-travel-title"></i> VIAJES DISPONIBLES -
                   <div className="post-travel-btn">
-                    <button onClick={() => setShowModal(true)}>Open Modal</button>
+                    <button onClick={handleAddTrip}>Añade Viaje</button>
                   </div>
                   <div className="filter-dropdown">
                     <button className="filter-btn" onClick={() => setShowFilters(!showFilters)}>
@@ -176,7 +203,7 @@ function Camping() {
                   <div className="row driver-info">
                     <div className="col">
                       Driver Info: {vehicle.info}
-                      <button onClick={() => handleDelete(vehicle.key)}>Eliminar</button>
+                      <button onClick={() => handleLoginToDelete(vehicle)}>Eliminar</button>
                       <button onClick={() => handleModify(vehicle)}>Modificar</button>
                     </div>
                   </div>
@@ -190,7 +217,7 @@ function Camping() {
       </div>
 
       {showModal && (
-                <Modal showModal={showModal} closeModal={() => setShowModal(false)}>
+        <Modal showModal={showModal} closeModal={() => setShowModal(false)}>
           <p>El usuario debe estar registrado para postear un viaje</p>
           <button onClick={() => { setShowModal(false); setShowRegisterForm(true); }}>REGISTRO</button>
           <button onClick={() => { setShowModal(false); setShowLoginForm(true); }}>AÑADE VIAJE</button>
@@ -212,13 +239,22 @@ function Camping() {
         </Modal>
       )}
 
+      {showLoginToModify && (
+        <Modal showModal={showLoginToModify} closeModal={() => setLoginToModify(false)}>
+          <LoginToModify
+            closeModal={() => setLoginToModify(false)}
+            onSuccess={(authenticated) => handleLoginModifySuccess(authenticated, modifiedVehicle)}
+          />
+        </Modal>
+      )}
+
       {showAddTripForm && (
         <Modal showModal={showAddTripForm} closeModal={() => setShowAddTripForm(false)}>
           <AddTripForm closeModal={() => setShowAddTripForm(false)} />
         </Modal>
       )}
 
-      {showModifyForm && modifiedVehicle && ( // Mostrando el formulario de modificación
+      {showModifyForm && modifiedVehicle && (
         <Modal showModal={showModifyForm} closeModal={() => setShowModifyForm(false)}>
           <ModifyTripForm
             vehicle={modifiedVehicle}
