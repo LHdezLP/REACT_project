@@ -25,6 +25,12 @@ The Camping page now features a full CRUD. It uses Firebase RealtimeDatabase to 
 
 The register option allows for new users to be stored in the database.
 
+It is advised to register your own user to test the crud.
+
+!!IMPORTANT: use an alias and a fake password, refrain from using a password you use every day.
+
+Username and password already registered in the database that can be used for testing: luis, luis123
+
 ## JSON Array
 ---
 The `carrousel.js` file contains an array of objects representing images and descriptions for the carousel on the Home page.
